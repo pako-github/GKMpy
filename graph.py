@@ -279,17 +279,17 @@ class Graph:
                 raise NoCompatibleConnectionFound(f"No compatible connection found for edge{edge}")
 
 def vgraph():
-    vg = Graph("vater_graph.gkm")
+    vg = Graph("vgraph.gkm")
 
-    vg.loadWeights("vater_graph")
-    #p = [ (1,3), (3,4), (4,6), (6,7), (7,8), (8,11), (11,12), (1,12) ]
-    p = [(4,5), (5,6), (6,7), (7,9), (8,9), (7,8), (6,7), (4,6)]
+    vg.loadWeights("vgraph")
+    p = [ (1,3), (3,4), (4,6), (6,7), (7,8), (8,11), (11,12), (1,12) ]
+    #p = [(4,5), (5,6), (6,7), (7,9), (8,9), (7,8), (6,7), (4,6)]
     outer = [ vg.findEdge(e[0],e[1]) for e in p]
     vg.createConnection()
     print(p, vg.computeOrientationPath(outer))
     #print(vg.computeOrientationPath(outer))
-    #for path in vater_graph.computeAllConnectionPaths():
-    #    print(path, vater_graph.computeOrientationPath(path))
+    for path in vg.computeAllConnectionPaths():
+        print(path, vg.computeOrientationPath(path))
 
 def cp3():
     cp3 = Graph("cp3.gkm")
